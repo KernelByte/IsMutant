@@ -40,21 +40,24 @@ public class MutantController {
     	return mutantService.findALL();
     }
     
-    @GetMapping("/mutant/{id}")
+    @GetMapping("/mutantx/{id}")
     public Mutant findById( @PathVariable String id) {
     	return mutantService.findId(id).get();
     }
     
-    @GetMapping("/mutantcheck/{dna}")
+    @GetMapping("/mutant/{dna}")
     public ResponseEntity<String> isMutant (@PathVariable String[] dna) {
     	
     	boolean responseDna = mutantService.isMutant(dna);
     	
     	if (responseDna) {
+    		mutantService.getCheckMutant(dna);
     		return new ResponseEntity<>(HttpStatus.OK + ": HTTP 200-OK", HttpStatus.OK);
 		} else {
+			mutantService.getCheckMutant(dna);
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN + ": 403-Forbidden", HttpStatus.FORBIDDEN);
 		}
+    	
     }
     
 	

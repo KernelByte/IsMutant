@@ -3,6 +3,7 @@ package com.KernelByte.ProjectIsMutant.service;
 import com.KernelByte.ProjectIsMutant.models.Mutant;
 import com.KernelByte.ProjectIsMutant.utility.ComString;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +58,15 @@ public class MutantService {
 			}
 		}
 	   return respuesta;
+	   
    }
+   
+   public void getCheckMutant(String[] dna) {
+        Mutant mutant = new Mutant();
+		mutant.setCadenaDna(dna);
+		
+		mutantRepository.save(mutant);
+		
+	}
    
 }
